@@ -12,7 +12,7 @@
 ```
 qr-local-decoder/
 ├── decode-qr-img-quick-action.workflow/   # шаблон Quick Action (Automator)
-├── qr-local-decoder.py                    # скрипт декодера (CLI)
+├── qr_local_decoder.py                    # скрипт декодера (CLI)
 ├── requirements.txt                       # зависимости (opencv-python, pillow, pyperclip)
 ├── setup-mac-quick-action.sh              # установка Quick Action для macOS
 └── venv/                                  # (создаётся после установки)
@@ -64,15 +64,15 @@ pip install -r requirements.txt
 **Распознать QR в файле(ах):**
 
 ```bash
-python qr-local-decoder.py path/to/image.jpg
-python qr-local-decoder.py img1.png img2.jpg --copy  # скопирует первый результат
+python qr_local_decoder.py path/to/image.jpg
+python qr_local_decoder.py img1.png img2.jpg --copy  # скопирует первый результат
 ```
 
 **Распознать QR с вебкамеры (опционально):**
 
 ```bash
-python qr-local-decoder.py --webcam
-python qr-local-decoder.py --webcam --copy
+python qr_local_decoder.py --webcam
+python qr_local_decoder.py --webcam --copy
 ```
 
 В режиме вебкамеры нажми `Q` или `Esc` для выхода.
@@ -89,7 +89,7 @@ python qr-local-decoder.py --webcam --copy
 Скрипт `setup-mac-quick-action.sh` автоматически:
 
 * создаст/обновит `venv` и поставит зависимости;
-* сгенерирует Quick Action на основе шаблона и **пропишет** в него актуальные пути к твоему `venv` и `qr-local-decoder.py`;
+* сгенерирует Quick Action на основе шаблона и **пропишет** в него актуальные пути к твоему `venv` и `qr_local_decoder.py`;
 * **переместит** готовый воркфлоу в `~/Library/Services` под именем `decode qr img.workflow`.
 
 ### Установка
@@ -147,7 +147,7 @@ chmod +x setup-mac-quick-action.sh
 
 * Убедись, что изображение резкое и QR не обрезан.
 * Попробуй другой файл/ракурс.
-* В CLI проверь, есть ли вывод без `--copy` (чтобы увидеть любые тексты, даже не URL).
+* В CLI запусти с флагом `--debug`
 
 ---
 
@@ -156,19 +156,19 @@ chmod +x setup-mac-quick-action.sh
 **Вывести только результат (без копирования):**
 
 ```bash
-python qr-local-decoder.py qrcode.png
+python qr_local_decoder.py qrcode.png
 ```
 
 **Скопировать результат в буфер (CLI):**
 
 ```bash
-python qr-local-decoder.py qrcode.png --copy
+python qr_local_decoder.py qrcode.png --copy
 ```
 
 **Пакетная обработка:**
 
 ```bash
-python qr-local-decoder.py scans/*.jpg --copy
+python qr_local_decoder.py scans/*.jpg --copy
 ```
 
 ---
